@@ -24,7 +24,7 @@
                                         {{ $course->teacher->code }}</label> <br>
                                     <label for=""> {{ $course->teacher->designation }}</label> <br>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-5" wire:ignore>
                                     <h2>{{ $course->name }}</h2>
                                     <ul class="enrolment">
                                         <li> @lang('Price'): {{ $course->price() }}</li>
@@ -42,24 +42,28 @@
                                         alt="">
                                 </div>
                             @else
-                                <div class="text-center"><i class="fa fa-spinner fa-spin fa-4x"
-                                        aria-hidden="true"></i>
+                                <div class="text-center"><i class="fa fa-spinner fa-spin fa-4x" aria-hidden="true"></i>
                                 </div>
                             @endif
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">@lang('Cancel')</button>
-                    <button type="button" wire:click.prevent="storeEnrollment()"
-                        class="btn btn-primary main-btn">@lang('Proceed Enrollment')</button>
-                </div>
+                @if (!empty($course_id))
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-lg btn-danger"
+                            data-dismiss="modal">@lang('Cancel')</button>
+                        <button type="button" class="btn btn-lg btn-secondary"
+                            wire:click.prevent="addToCartButton({{ $course->id }})">@lang('Add to Cart')</button>
+                        <button type="button" wire:click.prevent="checkOut()"
+                            class="btn btn-primary main-btn">@lang('Check Out')</button>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
 
 </div>
-@livewire('login', ['course_id' => $course_id])
+@livewire('login', ['course_id' => $course_id]) 
 <style>
     .enrolment li {
         padding: 0.5em;

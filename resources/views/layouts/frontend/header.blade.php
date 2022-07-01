@@ -103,7 +103,7 @@
                         <ul>
                             <li><a href="#" id="search"><i class="fa fa-search"></i></a></li>
                             <li><a href="#" data-toggle="modal" data-target="#globalloginModal"><i
-                                        class="fa fa-shopping-bag"></i><span>0</span></a></li>
+                                        class="fa fa-shopping-bag"></i><span>@livewire('add-to-cart-counter')</span></a></li>
                             @auth
                                 <li><a href="{{ route('home') }}"><i class="fa fa-user"></i>
                                         @lang('Account')</a></li>

@@ -27,6 +27,15 @@ class constPerPageWord
     const Hundred = 'Hundred';
 }
 
+class constPayPalStatus
+{
+    const PENDING = 0;
+    const IN_PROCESS = 1;
+    const SUCCESS = 2;
+    const CANCEL = 3;
+    const ERROR = 4;
+}
+
 
 class constStatus
 {

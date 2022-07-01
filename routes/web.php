@@ -18,6 +18,7 @@ use App\Http\Controllers\FrontEnd\TeacherController;
 use App\Http\Controllers\FrontEnd\WebsiteController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SettingController;
 
@@ -97,4 +98,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('settings', SettingController::class);
     Route::resource('reviews', ReviewController::class);
+
+
+    // Paypal Routes
+    Route::get('payment-success', [PaymentController::class, 'success'])->name('payment.success');
+
+    Route::get('payment-cancel', [PaymentController::class, 'cancel'])->name('payment.cancel');
 });
